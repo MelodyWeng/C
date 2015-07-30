@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdlib>
+#include <windows.h>
+using namespace std;
+class CTimer
+{
+   private:
+         int hour,min,sec;  
+   public:
+          void SetTime(int a,int b,int c)  
+          {
+                     hour=a;
+                     min=b;
+                     sec=c;
+          }
+          void  Tick(void)
+          {
+               sec++;
+               min+=sec/60;
+               hour+=min/60;
+               sec%=60;
+               min%=60;
+               hour%=24;
+    return;
+          } 
+          void  Show(void)
+          {
+                cout<<hour<<":"<<min<<":"<<sec<<endl;
+          }
+};
+int main(void)
+{
+ CTimer myTimer;
+ myTimer.SetTime(23,59,55);
+ while(1) 
+ {
+ Sleep(1000);
+ system("cls");
+ myTimer.Tick();
+ myTimer.Show();
+ }
+
+ system("pause");
+  return 0;
+} 

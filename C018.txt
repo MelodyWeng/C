@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+class Caaa
+{
+      public:
+             int num1,num2;
+             Caaa()
+             {
+             }
+      Caaa(int a,int b)
+      {
+      num1=a;
+      num2=b;      
+      }   
+      void display()
+      {
+          cout<<"Printed from Caaa class"<<endl;
+      } 
+      void showsum()
+      {
+           cout<<"the sum of num1+num2"<<num1+num2<<endl;
+      } 
+};
+class Cbbb:public Caaa
+{
+      public:
+             void set_num(int a,int b)
+             {
+                  num1=a;
+                  num2=b;
+             }
+             void show()
+             {
+                  cout<<"num1="<<num1<<endl;
+                  cout<<"num2="<<num2<<endl;
+             }
+             void display()
+              {
+              cout<<"Printed from Cbbb class"<<endl;
+              } 
+};
+
+int main(void)
+{
+Caaa a1;
+Caaa a2(5,10);
+Cbbb b;
+a1.display();
+a2.showsum();
+b.set_num(10, 20);
+b.show();
+b.display(); 
+    
+    system("pause");
+    return 0;
+}

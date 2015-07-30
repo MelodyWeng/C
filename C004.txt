@@ -1,0 +1,41 @@
+#include<cstdlib>
+#include<iostream>
+using namespace std;
+
+void displaySortedNumbers(double,double,double);
+int main(void)
+{
+    double num1,num2,num3;
+    cout<<"insert num1:";
+    cin>>num1;
+    cout<<"insert num2:";
+    cin>>num2;
+    cout<<"insert num3:";
+    cin>>num3;
+    displaySortedNumbers(num1,num2,num3);
+    system("pause");
+    return 0;
+}
+void displaySortedNumbers(double num1,double num2,double num3)
+{
+     double num[]={num1,num2,num3},temp;;
+    if(num[0]>num[1])
+    {
+      temp=num[0];
+      num[0]=num[1];
+      num[1]=temp;
+    }
+    if(num[0]>num[2])
+    {
+      temp=num[0];
+      num[0]=num[2];
+      num[2]=temp;
+    }
+     if(num[1]>num[2])
+    {
+      temp=num[1];
+      num[1]=num[2];
+      num[2]=temp;
+    }
+     cout<<"asc:"<<num[0]<<","<<num[1]<<","<<num[2]<<"\n";
+}

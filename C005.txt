@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int reverse(int);
+
+int main (void)
+{
+    int n; 
+    cin>>n;
+    cout <<"result:";
+    reverse(n);
+    system("pause");
+    return 0;
+}
+
+int reverse(int a)
+{
+    if( a<=9 )
+    {
+     cout << a%10;
+     return 0;
+    }
+    else
+    {
+     cout << a%10;
+     return reverse(a/10);
+    }
+}

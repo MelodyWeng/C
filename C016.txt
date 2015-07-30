@@ -1,0 +1,184 @@
+#include <iostream>
+#include <cstdlib>
+///#include <stdlib.h>
+#include <string.h>
+using namespace std;
+class GeometricObject
+{
+		private:
+		        string color;
+                bool filled;
+     	public:	
+	GeometricObject()
+	{
+		color="white";
+		filled=false;
+	}
+	GeometricObject(const string&color,bool filled)
+	{
+		this->color=color;
+		this->filled=filled;
+	}	
+	string  getColor() 
+	{
+		return color;
+	} 
+	void setColor(const string&color)
+	{
+		this->color=color;
+	}
+	bool isFilled()
+	{
+		return filled;
+	}
+	void setFilled(bool filled)
+	{
+		this->filled = filled;
+	}
+	string toString()
+      {
+          string str1;
+          str1="Color :"+this->color+"   "+"Filled: "+(this->filled? "true" : "false");
+          return str1;
+      }
+};
+
+   class Circle : public GeometricObject
+   {
+   	private:
+   		double radius;
+   	public:
+   		Circle()
+   		{
+   			radius=1;
+   		}
+   		Circle(double radius)
+   		{
+   		this->radius=radius;
+   		}
+   		Circle(double radius,const string&color,bool filled): GeometricObject(color,filled)
+   		{
+   			this->radius=radius;
+   		}
+   		double getRadius()
+   		{
+   			return radius;
+   		}
+   		void setRadius(double radius)
+   		{
+   			this->radius=radius;
+   		}
+   		double getArea()
+   		{
+   			return radius*radius*3.14159;
+   		}
+   		double getDiameter()
+   		{
+   			return 2*radius;
+   		}
+   		double getPerimeter()
+   		{
+   			return 2*radius*3.14159;
+   		}
+  		string toString()
+   		{  
+           string str1;
+		   str1="The circle color is: "+getColor();
+	       char str2[50];
+	       sprintf(str2, " and radius is %f", this->radius);
+		   return str1+str2;
+   		}
+
+   };
+class Rectangle: public GeometricObject
+{
+private:
+       double width;
+	   double height;
+public:
+      	Rectangle()
+      	{
+      		width=1;
+      		height=1;
+      	}
+      	Rectangle(double width,double height)
+      	{
+      		this->width=width;
+      		this->height=height;
+      	}
+      	Rectangle(double width,double height,const string&color,bool filled): GeometricObject(color,filled)
+      	{
+      	    this->width=width;
+      		this->height=height;	
+      	}
+      	double getWidth()
+      	{
+      		return width;
+      	}
+      	double getHeight()
+      	{
+      		return height;
+      	}
+      	void setWidth(double width)
+      	{
+      		this->width=width;
+      	}
+		  void setHeight(double height)
+		  {
+		  	this->height=height;
+		  }      	
+		  double getArea()
+		  {
+		  	return width*height;
+		  }
+		  double getPerimeter()
+		  {
+		  	return 2*(width+height);
+		  }
+		  string toString()
+		  {
+           char str1[50];
+           sprintf(str1, " The Rectangle height is:  %f", this->height);
+           char str2[50]; 
+	       sprintf(str2, " and width is %f", this->width);
+	       string str3(str1);
+	       string str4(str2);
+		   return str3+str2; 
+		  }
+};
+
+int main()
+{
+GeometricObject shape;
+shape.setColor("red");
+shape.setFilled(true);
+cout << shape.toString() << endl
+<< " color: " << shape.getColor()
+<< " filled: " << (shape.isFilled() ? "true" : "false")<< endl;
+
+
+Circle circle(5);
+circle.setColor("black");
+circle.setFilled(false);
+cout << circle.toString()<< endl
+<< " color: " << circle.getColor()
+<< " filled: " << (circle.isFilled() ? "true" : "false")
+<< " radius: " << circle.getRadius()
+<< " area: " << circle.getArea()
+<< " perimeter: " << circle.getPerimeter()<< endl;
+
+
+
+Rectangle rectangle(2, 3);
+rectangle.setColor("orange");
+rectangle.setFilled(true);
+cout << rectangle.toString()<< endl
+<< " color: " << rectangle.getColor()
+<< " filled: " << (rectangle.isFilled() ? "true" : "false")
+<< " width: " << rectangle.getWidth()
+<< " height: " << rectangle.getHeight()
+<< " area: " << rectangle.getArea()
+<< " perimeter: " << rectangle.getPerimeter() << endl;
+
+return 0;
+}

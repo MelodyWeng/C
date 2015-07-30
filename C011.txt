@@ -1,0 +1,78 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+int main(void)
+{
+    int h,q,m,j,k,i;
+    
+    cout<<"insert year:";
+    cin>>i;	
+    cout<<"insert month:";
+    cin>>m;	
+    cout<<"insert day:";
+    cin>>q;	
+    
+    switch(m)
+    {
+
+    	case 3:
+    	case 4:
+    	case 5:
+    	case 6:
+        case 7:
+    	case 8:
+    	case 9:
+    	case 10:	
+		case 11:
+    	case 12:	
+    	case 1:
+    		m==13;
+    		break;
+    	case 2:
+    		m==14;
+    		break;
+    }
+    
+    
+    if(m==13||m==14)
+    {
+    	j=(i-1)/100;
+    	k=(i-1)%100;
+    }
+    else
+    {
+    	j=i/100;
+    	k=i%100;
+    }
+
+    h=(q+26*(m+1)/10+k+k/4+j/4+5*j)%7;
+    
+	switch(h)
+    {
+
+    	case 0:
+              cout<<"sat"<<endl;
+              break;
+    	case 1:
+              cout<<"sun"<<endl;
+              break;
+    	case 2:
+              cout<<"mon"<<endl;
+              break;
+    	case 3:
+              cout<<"tue"<<endl;
+              break;
+        case 4:
+              cout<<"wed"<<endl;
+              break;
+    	case 5:
+              cout<<"thu"<<endl;
+              break;
+    	case 6:	
+              cout<<"fri"<<endl;
+              break;
+    } 
+	 
+    system("pause");
+    return 0;
+}

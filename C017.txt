@@ -1,0 +1,94 @@
+#include<iostream>
+#include <cstdlib>
+using namespace std;
+class CTime
+{
+      private:
+             int hour, min;
+             double sec;
+      public:
+             CTime(int h, int m, double s): hour(h), min(m), sec(s){}
+             
+             void show_time()
+             {
+             cout<<hour<< "hr "<<min<<"min "<<sec<<"sec"<<endl;
+             }
+             
+             CTime(){}
+             
+             void set_time(int h,int m,double s)
+             {
+                  hour=h;
+                  min=m;
+                  sec=s;
+             }
+             double to_sec()
+             {
+                return hour*3600+min*60+sec;
+             }
+             int operator>(CTime &t)
+             {
+                 return (this->to_sec()>t.to_sec());
+             }
+             
+             int operator<(CTime &t)
+             {
+                 return (this->to_sec()<t.to_sec());
+             }
+             CTime operator +(CTime &t)
+             {
+                   double time,s;
+                   int h,m;
+                   time=this->to_sec()+t.to_sec();
+                   h=time/3600;
+                   m=(time-h*3600)/60;
+                   s=time-(h*3600+m*60);
+                   return CTime(h,m,s);
+             }
+             
+             CTime operator-(CTime &t)
+             {
+                   double time,s;
+                   int h,m;
+                   time=this->to_sec()-t.to_sec();
+                   h=time/3600;
+                   m=(time-h*3600)/60;
+                   s=time-(h*3600+m*60);
+                   return CTime(h,m,s);
+             }
+             
+};
+
+
+
+
+
+int main(void)
+{
+ CTime t1(3, 23, 56.3);
+ CTime t2(5, 45, 30.3);
+ CTime t3;
+ 
+ t3.set_time(6, 10, 25.4);
+ 
+ t1.show_time();
+ t2.show_time();
+ t3.show_time();
+ 
+ if (t1>t2)
+ cout<<"t1>t2"<<endl; 
+ else
+ cout<< "t1<=t2"<<endl;
+ if (t1<t2)
+ cout<< "t1<t2"<<endl;
+ else
+ cout<< "t1>=t2"<<endl;
+ 
+ t3=t1+t2;
+ t3.show_time();
+ t3=t2-t1;
+ t3.show_time();
+ 
+ system("pause");
+ return(0);
+}

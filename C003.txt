@@ -1,0 +1,22 @@
+#include<cstdlib>
+#include<iostream>
+using namespace std;
+
+int main(void)
+{
+    int max=0,count=0,val;
+    do{
+        cout<<"insert a integer:";
+        cin>>val;
+        if(val>max)
+        {
+                   max=val;
+                   count=1;
+        }
+        else if(val==max)
+        count++;
+    }while(val!=0);
+     cout<<"max:"<<max<<",have"<<count<<"times!\n";
+     system("pause");
+     return 0;
+}

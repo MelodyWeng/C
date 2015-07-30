@@ -1,0 +1,25 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+int main(void)
+{
+    int i,a,b,c,d,x=0;
+    do{
+              for(i=1000;i<=1048;i++)
+              {
+              a=i/1000;
+              b=(i-(a*1000))/100;
+              c=(i-(a*1000)-(b*100))/10;
+              d=(i-(a*1000)-(b*100))%10;
+              if((a!=b)&&(a!=c)&&(a!=d)&&(b!=c)&&(b!=d)&&(c!=d))
+              {
+              cout<<i<<" ";
+              x++;
+              if(x%5==0)
+              cout<<endl;
+              }
+              }
+    }while(x<20);
+    system("pause");
+    return 0;
+}

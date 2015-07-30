@@ -1,0 +1,134 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+class CVector
+{
+	private:
+		    float m_fx,m_fy;
+		    float m_fNorm;
+	public:
+		//1.
+		     CVector()
+		     {
+		     	       m_fx=0;
+                       m_fy=0;
+		     }
+		      CVector(float a)
+             {
+                       m_fx=a;
+                       m_fy=a;
+             }
+             CVector(float a,float b)
+             {
+                       m_fx=a;
+                       m_fy=b;
+             } 
+             CVector(const CVector &v)
+             {
+                       m_fx=v.m_fx;
+                       m_fy=v.m_fy;
+             }
+            void Show(void)
+            {
+              cout<<"("<<m_fx<<","<<m_fy<<")"<<endl;
+            }
+        //2.
+             float Dist()
+            {
+            m_fNorm=sqrt(m_fx*m_fx+m_fy*m_fy);
+            return m_fNorm ;
+            }
+            void ShowNorm(void)
+	        {
+            cout<<Dist()<<endl;
+	        }
+	    //3.
+           float Dist(const CVector &v)
+            {
+            float o,p;
+	    	o=this->m_fx-v.m_fx;
+	        p=this->m_fy-v.m_fy;
+	        m_fNorm=sqrt(o*o+p*p);
+            return m_fNorm ;
+            }
+        //4.
+             float operator*(CVector &v)
+	        {
+	        return (this->m_fx*v.m_fx+this->m_fy*v.m_fy);
+	        }
+	         float operator-(CVector&v)
+	        {
+	        return (this->Dist()-v.Dist());
+	        }
+	         float operator+(CVector&v)
+	        {
+	        return (this->Dist()+v.Dist());
+	        }
+	        bool operator>(CVector&v)
+	        {
+	        return (this->Dist()>v.Dist());
+	        }
+	        bool operator>(const int&var)
+	        {
+	        return (this->Dist()>var);
+	        }	        
+	    //5.
+		 CVector Compare ( CVector &v)
+	    {
+	    	if(this->Dist()>v.Dist())
+           return CVector(m_fx,m_fy); 
+            else
+           return CVector(v.m_fx,v.m_fy);
+	    }
+	    	        
+};
+	        bool operator>(const int &var,CVector &v)
+	        {
+	        return (var>v.Dist());
+	        }
+
+int main(void)
+{
+CVector v1;
+CVector v2(1);
+CVector v3(4,6);
+CVector v4(v2);
+CVector vt;
+bool bRet;
+
+
+cout << "v1 = "; v1.Show(); cout << endl;
+cout << "v2 = "; v2.Show(); cout << endl;
+cout << "v3 = "; v3.Show(); cout << endl;
+cout << "v4 = "; v4.Show(); cout << endl;
+
+
+v1.ShowNorm();
+v2.ShowNorm();
+v3.ShowNorm();
+v4.ShowNorm();
+
+
+v2.Show(); cout << " 到 "; v3.Show();
+cout << " 的距離為: " << v2.Dist(v3) << endl;
+
+
+cout << "v2 * v3 = " << setw(8) << v2*v3 << endl;
+cout << "v2 - v3 = " << setw(8) << v2-v3 << endl;
+cout << "v2 + v3 = " << setw(8) << v2+v3 << endl;
+bRet = v3 > v2;
+cout << "v3 > v2 = " << setw(8) << bRet << endl;
+bRet = v3 > 5;
+cout << "v3 > 5 = " << setw(8) << bRet << endl;
+bRet = 5 > v3;
+cout << "5 > v3 = " << setw(8) << bRet << endl;
+
+
+v2.Show(); cout << " 與 "; v3.Show(); cout << "相比" << endl;
+vt = v2.Compare(v3);
+vt.Show(); cout << " 的長度較長" << endl;
+system("pause");
+return(0);
+}

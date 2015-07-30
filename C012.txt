@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main(void)
+{
+int n,i,j,k,l;
+do{
+cout<<"insert a number from 1-9:";
+cin>>n;
+}while(n<1||n>9);
+
+for (i=1;i<=n;i++)
+{
+   for(j=n;j>i;j--)
+   cout<<' ';	
+   for (k=i;k>=1;k--)
+   cout<<k;
+   for(l=2;l<=i;l++)
+   cout<<l;
+   cout<<endl;
+}
+
+system("pause");
+return 0; 
+}

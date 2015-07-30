@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cstdlib>
+#include<math.h>
+using namespace std;
+int m(int);
+int main(void)
+{
+    int i; 
+    cout<<"insert a integer:";
+    cin>>i;	
+    m(i); 
+    system("pause");
+    return 0;
+}
+int m(int a)
+{
+ float sum=0;
+ float k;
+ int j;
+ 
+ for(j=1;j<=a;j++)
+  {
+  sum=sum+pow(-1,j+1)/(2*j-1);
+  }
+  k=sum*4;
+  cout<<k<<endl;
+}
